@@ -11,3 +11,4 @@ urlpatterns = [
    ## path("second_app/",include("second_app.urls")),
 ]
   
+  
