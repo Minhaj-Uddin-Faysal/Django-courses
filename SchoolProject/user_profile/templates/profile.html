@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="profile-card">
+            <h2>{{profile.user.username}}</h2>
+            <p>Email: {{ profile.user.email }}</p>
+            <p>Birth date: {{ profile.birth_date|default:"Not set" }}</p>
+            <p>Bio: {{ profile.bio|linebreaks }}</p>
+            <form method=="post" action="#">
+                <button>Edit profile</button>
+            </form>
+        </div>
+    </body>
+</html>

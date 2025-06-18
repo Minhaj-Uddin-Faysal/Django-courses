@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+</head>
+<body>
+  <div class="d-flex justify-content-center align-items-center" style="margin-top:10px">
+    <form class="d-flex" style="max-width: 300px; width: 100%;" method="GET" action="{% url 'search_book' %}">
+      <input class="form-control form-control-sm me-2" type="search" placeholder="Search" name="q" value="{{query}}">
+      <button class="btn btn-sm btn-primary" type="submit">Go</button>
+    </form>
+  </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">published date</th>
+            <th scope="col">Pages</th>
+            <th scope="col">Review</th>
+          </tr>
+        </thead>
+        <tbody >
+          {% for st in books %}
+          <tr>
+            <th scope="row">{{st.title}}</th>
+            <td>{{st.author}}</td>
+            <td>{{st.published_date}}</td>
+            <td>{{st.pages}} <form method="POST" action="{% url 'delete_book' st.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm text-white">Delete</button>  
+            </form></td>
+            <td><form method="POST" action="{% url 'reviews' st.title %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm text-white">Reviews</button>  
+            </form></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div style="text-align:center">
+        <a class="btn btn-danger text-white" href="{% url 'add_book' %}">Add Book</a>
+    </div>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
+  
+</body>
+</html>

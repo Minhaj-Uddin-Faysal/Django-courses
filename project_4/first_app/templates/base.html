@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Website{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+
+    <nav>
+        <!-- Navigation bar -->
+    </nav>
+
+    <main>
+        {% block content %}This is Base html code{% endblock %}
+    </main>
+    <a href="{% url "base_page" %}">Base</a>
+    <a href="{% url "home_page" %}">Home</a>
+  
+    <footer>
+        <p>Copyright © 2025</p>
+    </footer>
+</body>
+</html>

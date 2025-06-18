@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+
+{% block head %}
+<h2>
+Here is student info
+</h2>
+{% endblock %}
+
+{% block inside %}
+{% csrf_token %}
+<table class='table'>
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Course</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for st in student %}
+<tr>
+<td>{{st.name}}</td>
+<td>{{st.email}} </td>
+<td> {% for course in st.enrolled_courses.all %}
+            {{ course.name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+            No courses enrolled
+        {% endfor %} </td>
+</tr>
+{% endfor %}
+{% endblock %}

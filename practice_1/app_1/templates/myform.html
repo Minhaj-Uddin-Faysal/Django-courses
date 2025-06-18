@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%block content%}
+    {% comment %} <form method="post" action="{% url 'submit_form' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name"><br>
+    
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email"><br>
+    
+        <button type="submit">Submit</button>
+    </form>
+     {% endcomment %}
+     <form method="post" action="{% url 'submit_form' %}">
+      {% csrf_token %}
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name"><br>
+  
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email"><br>
+      <select class="form-select" aria-label="Default select example" name="select" style="width:auto;height:auto;" >
+        <option selected>Ratings</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <button type="submit">Submit</button>
+  </form>
+  
+{%endblock%}
